@@ -69,7 +69,7 @@ grammar =
                         }]
             }
             {
-                name: "meta.function-call"
+                name: "meta.function-call.dot"
                 match: /(plz){whsp}({id}(?:\.{id})*)(?:{whsp}(with){whsp}(.*))?/
                 captures:
                     1:
@@ -99,10 +99,38 @@ grammar =
                         patterns: [
                             include: "source.dogescript"
                         ]
-                }
+            }
+            {
+                name: "meta.function-call.dot"
+                match: /({id}(?:{whsp}does{whsp}{id})+)(?:{whsp}(with){whsp}(.*))?/
+                captures:
+                    1:
+                        match: /^((?:{id}{whsp}does{whsp})+({id}))$/
+                        captures:
+                            1:
+                                patterns: [
+                                    {
+                                        match: /{id}/
+                                        name: "variable.other.object"
+                                    }
+                                    {
+                                        match: /does/
+                                        name: "keyword.control"
+                                    }
+                                ]
+                            2:
+                                name: "entity.name.function"
+                    2:
+                        name: "keyword.control"
+                    3:
+                        name: "meta.function.parameters"
+                        patterns: [
+                            include: "source.dogescript"
+                        ]
+            }
             {
                 name: "keyword.control"
-                match: /\b(?:wow|wow&|rly|but|maybe|notrly|many|many|so|as|does|trained)\b/
+                match: /\b(?:wow|wow&|rly|but|maybe|notrly|many|many|so|as|dose|trained|new)\b/
             }
             {
                 name: "constant.numeric.decimal"
@@ -111,6 +139,10 @@ grammar =
             {
                 name: "keyword.operator"
                 match: /[+\-*/%^!?:&|]/
+            }
+            {
+                name: "keyword.operator.logical"
+                match: /\b(?:and|or)\b/
             }
         ]
 
