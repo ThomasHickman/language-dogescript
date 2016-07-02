@@ -1,7 +1,7 @@
 {makeGrammar, rule} = require('atom-syntax-tools')
 
 grammar =
-    name: "dogescript"
+    name: "Dogescript"
     scopeName: "source.dogescript"
     fileTypes: [ "djs" ]
     firstLineMatch: '^#!.*\\bdogescript'
