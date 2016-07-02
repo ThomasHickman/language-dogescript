@@ -1,4 +1,4 @@
-# langauge-dogescript theme
+# langauge-dogescript
 
 Such dogescript. Much syntax. Very highlight.
 
