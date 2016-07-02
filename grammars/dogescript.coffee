@@ -7,7 +7,7 @@ grammar =
     firstLineMatch: '^#!.*\\bdogescript'
 
     macros:
-        id: /[a-zA-Z$_][a-zA-Z$_\d]*/
+        id: /(?:[a-zA-Z$_][a-zA-Z$_\d]*)/
         whsp: /(?: |\t)+/
 
     patterns: [
@@ -70,18 +70,18 @@ grammar =
             }
             {
                 name: "meta.function-call"
-                match: /(plz){whsp}({id}(?:.{id})*)(?:{whsp}(with){whsp}(.*))?/
+                match: /(plz){whsp}({id}(?:\.{id})*)(?:{whsp}(with){whsp}(.*))?/
                 captures:
                     1:
                         name: "keyword.control"
                     2:
                         patterns: [
                             {
-                                match: /{id}/
+                                match: /^{id}$/
                                 name: "entity.name.function"
                             }
                             {
-                                match: /({id}.)+({id})/
+                                match: /^({id}\.)+({id})$/
                                 captures:
                                     1:
                                         patterns: [
@@ -96,6 +96,9 @@ grammar =
                         name: "keyword.control"
                     4:
                         name: "meta.function.parameters"
+                        patterns: [
+                            include: "source.dogescript"
+                        ]
                 }
             {
                 name: "keyword.control"
@@ -103,7 +106,7 @@ grammar =
             }
             {
                 name: "constant.numeric.decimal"
-                match: /\d+(?:.\d+)?(?:e(?:\+|-)\d+)?/
+                match: /\d+(?:\.\d+)?(?:e(?:\+|-)\d+)?/
             }
             {
                 name: "keyword.operator"
