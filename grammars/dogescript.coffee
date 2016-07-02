@@ -130,7 +130,7 @@ grammar =
             }
             {
                 name: "keyword.control"
-                match: /\b(?:wow|wow&|rly|but|maybe|notrly|many|many|so|as|dose|trained|new)\b/
+                match: /\b(?:wow|wow&|rly|but|maybe|notrly|many|many|so|as|trained|new)\b/
             }
             {
                 name: "constant.numeric.decimal"
@@ -141,8 +141,8 @@ grammar =
                 match: /[+\-*/%^!?:&|]/
             }
             {
-                name: "keyword.operator.logical"
-                match: /\b(?:and|or)\b/
+                name: "keyword.operator.words"
+                match: /\b(?:not|is|and|or|next|as|)\b/
             }
         ]
 
