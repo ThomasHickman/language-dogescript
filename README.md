@@ -1,5 +1,5 @@
 # langauge-dogescript theme
 
-such dogescript, much syntax, very highlight
+Such dogescript. Much syntax. Very highlight.
 
-A syntax highlighter for dogescript
+A syntax highlighter for dogescript in atom
