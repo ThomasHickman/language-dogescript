@@ -7,7 +7,8 @@ grammar =
     firstLineMatch: '^#!.*\\bdogescript'
 
     macros:
-        id: /\b(?!\s*:)\b/
+        id: /[a-zA-Z$_][a-zA-Z$_\d]*/
+        whsp: /(?: |\t)+/
 
     patterns: [
         {
@@ -46,8 +47,8 @@ grammar =
         }
         {
             name: "meta.function.dogescript"
-            begin: /(such)\b({id})(?:\b(much)\b(.*))/
-            match:
+            match: /(such){whsp}({id})(?:{whsp}(much){whsp}(.*))?/
+            captures:
                 1:
                     name: "storage.type.function.dogescript"
                 2:

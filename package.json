@@ -10,5 +10,8 @@
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
+  },
+  "scripts": {
+    "build": "coffee grammars/dogescript.coffee > grammars/dogescript.cson"
   }
 }
