@@ -12,56 +12,102 @@ grammar =
 
     patterns: [
         {
-            name: "comment.line.dogescript"
-            begin: "ssh"
+            name: "comment.line"
+            begin: "shh"
             end: /\n/
         }
         {
-            name: 'string.quoted.single.dogescript'
+            name: "comment.block"
+            begin: /^quiet/
+            end: /^loud/
+        }
+        {
+            name: 'string.quoted.single'
             begin: /\'/
             captures:
                 0:
-                    name: 'punctuation.definition.string.begin.dogescript'
+                    name: 'punctuation.definition.string.begin'
             end: '\''
             endCaptures:
                 0:
-                    name: 'punctuation.definition.string.end.dogescript'
+                    name: 'punctuation.definition.string.end'
             patterns: [
                 {
                     match: /\\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)/
-                    name: 'constant.character.escape.dogescript'
+                    name: 'constant.character.escape'
                 }
                 {
                     match: /[^']*[^\n\\r'\\]$/
-                    name: 'invalid.illegal.string.dogescript'
+                    name: 'invalid.illegal.string'
                 }
             ]
         }
         {
-            name: "storage.type.var.dogescript"
+            name: "storage.type.var"
             match: /\bvery\b/
         }
         {
-            name: "keyword.operator.assignment.dogescript"
+            name: "keyword.operator.assignment"
             match: /\bis\b/
         }
         {
-            name: "meta.function.dogescript"
+            name: "meta.function"
             match: /(such){whsp}({id})(?:{whsp}(much){whsp}(.*))?/
             captures:
                 1:
-                    name: "storage.type.function.dogescript"
+                    name: "storage.type.function"
                 2:
-                    name: "entity.name.function.dogescript"
+                    name: "entity.name.function"
                 3:
-                    name: "storage.type.function.dogescript"
+                    name: "storage.type.function"
                 4:
-                    name: "meta.function.parameters.dogescript"
+                    name: "meta.function.parameters"
                     patterns:
                         [{
-                            name: "variable.parameter.function.dogescript"
+                            name: "variable.parameter.function"
                             match: /{id}/
                         }]
+            }
+            {
+                name: "meta.function-call"
+                match: /(plz){whsp}({id}(?:.{id})*)(?:{whsp}(with){whsp}(.*))?/
+                captures:
+                    1:
+                        name: "keyword.control"
+                    2:
+                        patterns: [
+                            {
+                                match: /{id}/
+                                name: "entity.name.function"
+                            }
+                            {
+                                match: /({id}.)+({id})/
+                                captures:
+                                    1:
+                                        patterns: [
+                                            match: /{id}/
+                                            name: "variable.other.object"
+                                        ]
+                                    2:
+                                        name: "entity.name.function"
+                            }
+                        ]
+                    3:
+                        name: "keyword.control"
+                    4:
+                        name: "meta.function.parameters"
+                }
+            {
+                name: "keyword.control"
+                match: /\b(?:wow|wow&|rly|but|maybe|notrly|many|many|so|as|does|trained)\b/
+            }
+            {
+                name: "constant.numeric.decimal"
+                match: /\d+(?:.\d+)?(?:e(?:\+|-)\d+)?/
+            }
+            {
+                name: "keyword.operator"
+                match: /[+\-*/%^!?:&|]/
             }
         ]
 
