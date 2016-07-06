@@ -43,14 +43,6 @@ grammar =
             ]
         }
         {
-            name: "storage.type.var"
-            match: /\bvery\b/
-        }
-        {
-            name: "keyword.operator.assignment"
-            match: /\bis\b/
-        }
-        {
             name: "meta.function"
             match: /(such){whsp}({id})(?:{whsp}(much){whsp}(.*))?/
             captures:
@@ -130,11 +122,8 @@ grammar =
             }
             {
                 name: "keyword.control"
-                match: /\b(?:wow|wow&|rly|but|maybe|notrly|many|many|so|as|trained|new)\b/
-            }
-            {
-                name: "constant.numeric.decimal"
-                match: /\d+(?:\.\d+)?(?:e(?:\+|-)\d+)?/
+                match: ///\b(?:wow|wow&|rly|but|maybe|notrly|many|many|
+                               so|as|trained|new|dose|with|is|very|is)\b///
             }
             {
                 name: "keyword.operator"
