@@ -137,6 +137,15 @@ grammar =
                                bigger|smaller|biggerish|smallerish)\b///
             }
             {
+                match: /{id}(?:\.{id})+/
+                captures:
+                    0:
+                        patterns: [
+                            name: "variable.other.object"
+                            match: /{id}/
+                        ]
+            }
+            {
                 match: /{id}/
             }
             {
