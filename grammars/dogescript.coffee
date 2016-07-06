@@ -93,25 +93,27 @@ grammar =
                         ]
             }
             {
-                name: "meta.function-call.dot"
-                match: /({id}(?:{whsp}does{whsp}{id})+)(?:{whsp}(with){whsp}(.*))?/
+                name: "meta.function-call.does"
+                match: /({id}(?:{whsp}dose{whsp}{id})+){whsp}(with){whsp}(.*)/
                 captures:
                     1:
-                        match: /^((?:{id}{whsp}does{whsp})+({id}))$/
-                        captures:
-                            1:
-                                patterns: [
-                                    {
-                                        match: /{id}/
-                                        name: "variable.other.object"
-                                    }
-                                    {
-                                        match: /does/
-                                        name: "keyword.control"
-                                    }
-                                ]
-                            2:
-                                name: "entity.name.function"
+                        patterns: [
+                            match: /^((?:{id}{whsp}dose{whsp})+)({id})$/
+                            captures:
+                                1:
+                                    patterns: [
+                                        {
+                                            match: /dose/
+                                            name: "keyword.control"
+                                        }
+                                        {
+                                            match: /{id}/
+                                            name: "variable.other.object"
+                                        }
+                                    ]
+                                2:
+                                    name: "entity.name.function"
+                            ]
                     2:
                         name: "keyword.control"
                     3:
