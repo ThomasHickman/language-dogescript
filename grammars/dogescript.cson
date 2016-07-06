@@ -1,0 +1,159 @@
+'fileTypes': [
+  'djs'
+]
+'firstLineMatch': '^#!.*\\bdogescript'
+'name': 'Dogescript'
+'scopeName': 'source.dogescript'
+'patterns': [
+  {
+    'name': 'comment.line.dogescript'
+    'begin': 'shh'
+    'end': '\\n'
+  }
+  {
+    'name': 'comment.block.dogescript'
+    'begin': '^quiet'
+    'end': '^loud'
+  }
+  {
+    'name': 'string.quoted.single.dogescript'
+    'begin': '\\\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.string.begin.dogescript'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.string.end.dogescript'
+    'patterns': [
+      {
+        'match': '\\\\(x\\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)'
+        'name': 'constant.character.escape.dogescript'
+      }
+      {
+        'match': '[^\']*[^\\n\\\\r\'\\\\]$'
+        'name': 'invalid.illegal.string.dogescript'
+      }
+    ]
+  }
+  {
+    'name': 'meta.function.dogescript'
+    'match': '(such)(?: |\\t)+((?:[a-zA-Z$_][a-zA-Z$_\\d]*))(?:(?: |\\t)+(much)(?: |\\t)+(.*))?'
+    'captures':
+      '1':
+        'name': 'storage.type.function.dogescript'
+      '2':
+        'name': 'entity.name.function.dogescript'
+      '3':
+        'name': 'storage.type.function.dogescript'
+      '4':
+        'name': 'meta.function.parameters.dogescript'
+        'patterns': [
+          {
+            'name': 'variable.parameter.function.dogescript'
+            'match': '(?:[a-zA-Z$_][a-zA-Z$_\\d]*)'
+          }
+        ]
+  }
+  {
+    'name': 'meta.function-call.dot.dogescript'
+    'match': '(plz)(?: |\\t)+((?:[a-zA-Z$_][a-zA-Z$_\\d]*)(?:\\.(?:[a-zA-Z$_][a-zA-Z$_\\d]*))*)(?:(?: |\\t)+(with)(?: |\\t)+(.*))?'
+    'captures':
+      '1':
+        'name': 'keyword.control.dogescript'
+      '2':
+        'patterns': [
+          {
+            'match': '^(?:[a-zA-Z$_][a-zA-Z$_\\d]*)$'
+            'name': 'entity.name.function.dogescript'
+          }
+          {
+            'match': '^((?:(?:[a-zA-Z$_][a-zA-Z$_\\d]*)\\.)+)((?:[a-zA-Z$_][a-zA-Z$_\\d]*))$'
+            'captures':
+              '1':
+                'patterns': [
+                  {
+                    'match': '(?:[a-zA-Z$_][a-zA-Z$_\\d]*)'
+                    'name': 'variable.other.object.dogescript'
+                  }
+                ]
+              '2':
+                'name': 'entity.name.function.dogescript'
+          }
+        ]
+      '3':
+        'name': 'keyword.control.dogescript'
+      '4':
+        'name': 'meta.function.parameters.dogescript'
+        'patterns': [
+          {
+            'include': 'source.dogescript'
+          }
+        ]
+  }
+  {
+    'name': 'meta.function-call.does.dogescript'
+    'match': '((?:[a-zA-Z$_][a-zA-Z$_\\d]*)(?:(?: |\\t)+dose(?: |\\t)+(?:[a-zA-Z$_][a-zA-Z$_\\d]*))+)(?: |\\t)+(with)(?: |\\t)+(.*)'
+    'captures':
+      '1':
+        'patterns': [
+          {
+            'match': '^((?:(?:[a-zA-Z$_][a-zA-Z$_\\d]*)(?: |\\t)+dose(?: |\\t)+)+)((?:[a-zA-Z$_][a-zA-Z$_\\d]*))$'
+            'captures':
+              '1':
+                'patterns': [
+                  {
+                    'match': 'dose'
+                    'name': 'keyword.control.dogescript'
+                  }
+                  {
+                    'match': '(?:[a-zA-Z$_][a-zA-Z$_\\d]*)'
+                    'name': 'variable.other.object.dogescript'
+                  }
+                ]
+              '2':
+                'name': 'entity.name.function.dogescript'
+          }
+        ]
+      '2':
+        'name': 'keyword.control.dogescript'
+      '3':
+        'name': 'meta.function.parameters.dogescript'
+        'patterns': [
+          {
+            'include': 'source.dogescript'
+          }
+        ]
+  }
+  {
+    'name': 'keyword.control.dogescript'
+    'match': '\\b(?:wow|wow&|rly|but|maybe|notrly|many|many|so|as|trained|new|dose|with|is|very|is)\\b'
+  }
+  {
+    'name': 'keyword.operator.dogescript'
+    'match': '[+\\-*/%^!?:&|]'
+  }
+  {
+    'name': 'keyword.operator.words.dogescript'
+    'match': '\\b(?:not|is|and|or|next|as|more|less|lots|few|bigger|smaller|biggerish|smallerish)\\b'
+  }
+  {
+    'match': '(?:[a-zA-Z$_][a-zA-Z$_\\d]*)(?:\\.(?:[a-zA-Z$_][a-zA-Z$_\\d]*))+'
+    'name': 'thing1.dogescript'
+    'captures':
+      '0':
+        'patterns': [
+          {
+            'name': 'variable.other.object.dogescript'
+            'match': '(?:[a-zA-Z$_][a-zA-Z$_\\d]*)'
+          }
+        ]
+  }
+  {
+    'match': '(?:[a-zA-Z$_][a-zA-Z$_\\d]*)'
+  }
+  {
+    'name': 'constant.numeric.decimal.dogescript'
+    'match': '\\d+(?:\\.\\d+)?(?:e(?:\\+|-)\\d+)?'
+  }
+]
