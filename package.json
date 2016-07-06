@@ -1,10 +1,10 @@
 {
   "name": "language-dogescript",
   "version": "0.0.0",
-  "description": "Much dogescript, very syntax",
+  "description": "Such dogescript. Much syntax. Very highlight.",
   "keywords": [
-    "syntax",
-    "theme"
+    "highlighting",
+    "dogescript"
   ],
   "repository": "https://github.com/ThomasHickman/language-dogescript",
   "license": "MIT",
