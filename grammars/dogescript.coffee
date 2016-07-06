@@ -131,7 +131,9 @@ grammar =
             }
             {
                 name: "keyword.operator.words"
-                match: /\b(?:not|is|and|or|next|as|)\b/
+                match: ///\b(?:not|is|and|or|next|as|more|less|lots|few|
+                               bigger|smaller|biggerish|smallerish)\b///
+            }
             }
         ]
 
