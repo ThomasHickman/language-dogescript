@@ -73,7 +73,7 @@ grammar =
                                 name: "entity.name.function"
                             }
                             {
-                                match: /^({id}\.)+({id})$/
+                                match: /^((?:{id}\.)+)({id})$/
                                 captures:
                                     1:
                                         patterns: [
