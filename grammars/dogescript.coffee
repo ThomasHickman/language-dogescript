@@ -134,6 +134,12 @@ grammar =
                 match: ///\b(?:not|is|and|or|next|as|more|less|lots|few|
                                bigger|smaller|biggerish|smallerish)\b///
             }
+            {
+                match: /{id}/
+            }
+            {
+                name: "constant.numeric.decimal"
+                match: /\d+(?:\.\d+)?(?:e(?:\+|-)\d+)?/
             }
         ]
 
