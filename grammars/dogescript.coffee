@@ -43,6 +43,27 @@ grammar =
             ]
         }
         {
+            name: 'string.quoted.double'
+            begin: /\"/
+            captures:
+                0:
+                    name: 'punctuation.definition.string.begin'
+            end: '\"'
+            endCaptures:
+                0:
+                    name: 'punctuation.definition.string.end'
+            patterns: [
+                {
+                    match: /\\(x\h{2}|[0-2][0-7]{0,2}|3[0-6][0-7]?|37[0-7]?|[4-7][0-7]?|.)/
+                    name: 'constant.character.escape'
+                }
+                {
+                    match: /[^"]*[^\n\\r"\\]$/
+                    name: 'invalid.illegal.string'
+                }
+            ]
+        }
+        {
             name: "meta.function"
             match: /(such){whsp}({id})(?:{whsp}(much){whsp}(.*))?/
             captures:

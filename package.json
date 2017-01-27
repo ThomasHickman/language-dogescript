@@ -13,5 +13,8 @@
   },
   "scripts": {
     "build": "coffee grammars/dogescript.coffee > grammars/dogescript.cson"
+  },
+  "devDependencies": {
+    "atom-syntax-tools": "^0.9.1"
   }
 }
